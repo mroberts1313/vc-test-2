@@ -1,0 +1,130 @@
+/*================ Site Header ================*/
+.site-logo {
+  display: block;
+
+  img {
+    display: block;
+    width: 100%;
+  }
+}
+
+.header-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  @include media-query($small) {
+	  flex-direction: row;
+	}
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  padding: .5rem 2%;
+  background: $color-bg-primary;
+}
+
+.header-logo {
+  margin: 0;
+  order: 1;
+  width: 15%;
+  min-width: 100px;
+}
+
+.header-search {
+  order: 2;
+}
+
+.hdrcartlink {
+  order: 3;
+}
+
+.header-nav {
+  border-bottom: #ccc solid 1px;
+  padding: 0 5%;
+  background: $color-bg-secondary;
+}
+.site-nav {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  @include media-query($small) {
+	  display: none;
+	  position: absolute;
+	  top: 100%;
+	  left: 0;
+	  width: 100%;
+      background: $color-bg-secondary;
+	}
+}
+.site-nav li {
+  display: inline-block;
+  padding: 0 2rem;
+  white-space: nowrap;
+  border-right: #002e5f solid 1px;
+  @include media-query($small) {
+	  display: block;
+	  border-right: none;
+	}
+}
+.site-nav li > a {
+  display: block;
+  padding: .5rem 1rem;
+  text-decoration: none;
+  @include media-query($small) {
+	  border-bottom: #002e5f solid 1px;
+	}
+}
+
+.site-nav--has-submenu {
+  position: relative;
+}
+.site-nav--has-submenu .icon--wide {
+  width: 1.2em;
+  position: relative;
+  left: .3em;
+  @include media-query($small) {
+	  display: none;
+	}
+}
+.site-nav__submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: $color-bg-tertiary;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  @include media-query($small) {
+	  display: block;
+	  position: relative;
+	  top: 0;
+	}
+}
+
+.site-nav__submenu li {
+  display: block;
+  padding: 0;
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+  border: 0;
+  @include media-query($small) {
+	  text-align: left;
+	}
+}
+
+.hamburger {
+  display: none;
+  @include media-query($small) {
+	  display: block;
+	}
+  
+}
+
+
+
