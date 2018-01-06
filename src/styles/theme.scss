@@ -23,6 +23,11 @@
 @import url('global/forms.scss');
 @import url('global/blank-states.scss');
 
+/*================ OWL Carousel ================*/
+@import url('vendor/owl.carousel.min.css');
+@import url('vendor/owl.theme.default.min.css');
+
 /*================ MODULES ================*/
 @import url('modules/site-header.scss');
 @import url('modules/gift-card-template.scss');
+@import url('modules/home.scss');

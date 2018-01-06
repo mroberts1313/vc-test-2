@@ -57,13 +57,32 @@ $(document).ready(function() {
 	  e.preventDefault();
 	  $(this).parent().siblings("ul").slideToggle();
 	});*/
-	$(".site-nav--has-submenu").hover(
+	
+	
+	 $(".site-nav--has-submenu").hover(
 	  function() {
-		$(this).children("ul").slideToggle();
+		if ($(window).width() > 750) {
+			$(this).children("ul").slideToggle();
+		}
 	  }, function() {
-		$(this).children("ul").slideToggle();
+		if ($(window).width() > 750) {
+			$(this).children("ul").slideToggle();
+		}
 	  }
 	);
+	$(window).resize(function() {
+		if ($(window).width() > 750) {
+			if ( $('.site-nav').css('display') == 'none') {
+			  $('.site-nav').css('display', 'flex'); 
+			  $('.site-nav__submenu').css('display', 'none');
+			}
+		} else {
+		  $('.site-nav').css('display', 'none');
+		  $('.site-nav__submenu').css('display', 'block');
+	    }
+	});
+	
+
   $(".hamburger").click(function(e) {
     e.preventDefault();
     $('.site-nav').slideToggle();

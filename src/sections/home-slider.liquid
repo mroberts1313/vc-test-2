@@ -1,0 +1,135 @@
+<style>
+  .homeslide {
+    background: #dedede;
+	width: 100%;
+  }
+  .sliderimg {
+	width: 100%;
+  }
+  .home-1-owl {
+    position: relative;
+  }
+  .slider_content {
+    position: absolute;
+	top: 35%;
+	left: 10%;
+	padding: 2rem 3rem;
+	background: rgba(0, 0, 0, .4);
+  }
+  .slider_content h1 {
+    font-size: 3rem;
+	color: #fff;
+	text-shadow: 2px 2px 2px rgba(200, 200, 200, .6);
+  }
+  .home-slide-btn {
+    display: inline-block;
+    padding: 1rem;
+	border: #ccc solid 1px;
+	border-radius: 4px;
+	color: #fff;
+	background-color: darkblue;
+	text-decoration: none;
+	text-transform: uppercase;
+  }
+  .home-slide-btn:hover {
+	background-color: blue;
+  }
+  .home-1-owl.owl-theme .owl-prev {
+    position: absolute;
+	top: 40%;
+	left: .5rem;
+	background: transparent;
+  }
+  .home-1-owl.owl-theme .owl-next {
+    position: absolute;
+	top: 40%;
+	right: .5rem;
+	background: transparent;
+  }
+  .home-1-owl.owl-theme .owl-prev:hover {
+    opacity: .8;
+	background: transparent;
+  }
+  .home-1-owl.owl-theme .owl-next:hover {
+    opacity: .8;
+	background: transparent;
+  }
+</style>
+<div data-section-id="{{ section.id }}" class="{{ section.id }}" data-section-type="home-slider-section">
+  <div class="owl-carousel home-1-owl owl-theme">
+    <!--<div class="homeslide">
+		<h1>1</h1>
+		<a href="#" class="home-slide-btn">Shop Now</a>
+	</div>
+    <div class="homeslide">
+		<h1>2</h1>
+		<a href="#" class="home-slide-btn">Shop Now</a>
+	</div>
+    <div class="homeslide">
+		<h1>3</h1>
+		<a href="#" class="home-slide-btn">What are you waiting for?!</a>
+	</div>-->
+{% for block in section.blocks %}
+  <div class="homeslide" {{ block.shopify_attributes }}>
+    {% case block.type %}
+    {% when 'slider' %}
+      <img src="{{ block.settings.imgs | img_url: '2000x' }}" class="sliderimg">
+      <div class="slider_content">
+		  <h1>{{ block.settings.h1 }}</h1>
+		  <a href="{{ block.settings.link }}" class="home-slide-btn">{{ block.settings.linktext }}</a>
+	  </div>
+    {% endcase %}
+  </div>
+{% endfor %}
+  </div>
+</div>
+
+
+{% javascript %}
+$(document).ready(function(){
+	$('.home-1-owl').owlCarousel({
+		loop:true,
+		margin:10,
+		nav:true,
+		items:1,
+		navText: ["<img src='//d39hwjxo88pg52.cloudfront.net/trydrd/images/btn_prev.png' alt='Previous'>","<img src='//d39hwjxo88pg52.cloudfront.net/trydrd/images/btn_next.png' alt='Next'>"],
+	});
+});
+{% endjavascript %}
+
+{% schema %}
+  {
+    "name": "HomeSlider",
+    "max_blocks": 5,
+	"blocks": [
+      {
+        "type": "slider",
+        "name": "slider_info",
+        "settings": [
+          {
+            "id": "imgs",
+            "type": "image_picker",
+            "label": "Select Image"
+          },
+		  {
+		    "id": "h1",
+			"type": "text",
+			"label": "Big Promo Text"
+		  },
+		  {
+		    "id": "linktext",
+			"type": "text",
+			"label": "Link Text",
+			"default": "Shop Now"
+		  },
+		  {
+			  "id": "link",
+			  "type": "url",
+			  "label": "Button link"
+			}
+        ]
+      }
+    ]
+    
+  }
+{% endschema %}

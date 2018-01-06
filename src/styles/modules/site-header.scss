@@ -31,12 +31,33 @@ header {
   min-width: 100px;
 }
 
+.header-search-and-cart {
+  order: 2;
+  display: flex;
+  justify-content: space-between;
+  @include media-query($small) {
+	  flex-direction: column;
+	}
+}
+
 .header-search {
   order: 2;
+  @include media-query($small) {
+	  order: 3;
+	  text-align: right;
+	}
+	
+	input {
+	  max-width: 80%;
+	}
 }
 
 .hdrcartlink {
   order: 3;
+  @include media-query($small) {
+	  order: 2;
+	  text-align: right;
+	}
 }
 
 .header-nav {
@@ -54,9 +75,9 @@ header {
 	  display: none;
 	  position: absolute;
 	  top: 100%;
-	  left: 0;
 	  width: 100%;
-      background: $color-bg-secondary;
+	  left: 0;
+	  background: $color-bg-tertiary;
 	}
 }
 .site-nav li {
@@ -103,6 +124,7 @@ header {
 	  display: block;
 	  position: relative;
 	  top: 0;
+	  background: $color-bg-tertiary;
 	}
 }
 
@@ -122,6 +144,7 @@ header {
   display: none;
   @include media-query($small) {
 	  display: block;
+	  margin-top: 1rem;
 	}
   
 }
