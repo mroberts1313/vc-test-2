@@ -29,15 +29,14 @@
       </div>
 
 
-
-
     {% endif %}
 
 	<div class="header-search-and-cart">
+
 		<a class="hdrcartlink" href="/cart">
 		  {% include 'icon-cart' %}
 		  {{ 'layout.cart.title' | t }}
-		  ({{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }})
+		  [{{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }}]
 		</a>
 
 		{% if shop.customer_accounts_enabled %}
