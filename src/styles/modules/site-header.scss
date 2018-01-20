@@ -120,6 +120,7 @@ header {
   margin: 0 auto;
   padding: 0;
   list-style: none;
+  z-index: 10;
   @include media-query($small) {
 	  display: block;
 	  position: relative;

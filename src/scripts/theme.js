@@ -62,11 +62,11 @@ $(document).ready(function() {
 	 $(".site-nav--has-submenu").hover(
 	  function() {
 		if ($(window).width() > 750) {
-			$(this).children("ul").slideToggle();
+			$(this).children("ul").slideToggle('fast');
 		}
 	  }, function() {
 		if ($(window).width() > 750) {
-			$(this).children("ul").slideToggle();
+			$(this).children("ul").slideToggle('fast');
 		}
 	  }
 	);
