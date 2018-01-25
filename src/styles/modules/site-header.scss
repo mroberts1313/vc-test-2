@@ -8,6 +8,11 @@
   }
 }
 
+.header-wrap.fixedHeader {
+    position: fixed;
+    z-index: 10;
+}
+
 .header-wrap {
   position: relative;
   display: flex;
@@ -22,13 +27,19 @@ header {
   justify-content: space-between;
   padding: .5rem 2%;
   background: $color-bg-primary;
+  @include media-query($small) {
+	  width: 85%;
+	}
 }
 
 .header-logo {
   margin: 0;
   order: 1;
-  width: 15%;
+  width: 12%;
   min-width: 100px;
+  @include media-query($small) {
+	  min-width: 70px;
+	}
 }
 
 .header-search-and-cart {
@@ -37,6 +48,8 @@ header {
   justify-content: space-between;
   @include media-query($small) {
 	  flex-direction: column;
+	  width: 60%;
+	  padding-top: .5rem;
 	}
 }
 
@@ -45,10 +58,22 @@ header {
   @include media-query($small) {
 	  order: 3;
 	  text-align: right;
+	  white-space: nowrap;
 	}
-	
+
 	input {
-	  max-width: 80%;
+	  max-width: 75%;
+	  @include media-query($small) {
+		float: left;
+		font-size: 14px;
+		padding-top: .1rem;
+		padding-bottom: .1rem;
+	}
+	}
+	button {
+	  @include media-query($small) {
+		float: left;
+		}
 	}
 }
 
@@ -64,6 +89,9 @@ header {
   border-bottom: #ccc solid 1px;
   padding: 0 5%;
   background: $color-bg-secondary;
+  @include media-query($small) {
+	  width: 15%;
+	}
 }
 .site-nav {
   display: flex;
@@ -76,8 +104,9 @@ header {
 	  position: absolute;
 	  top: 100%;
 	  width: 100%;
-	  left: 0;
+	  right: 0;
 	  background: $color-bg-tertiary;
+	  z-index: 50;
 	}
 }
 .site-nav li {
@@ -147,8 +176,77 @@ header {
 	  display: block;
 	  margin-top: 1rem;
 	}
-  
+
 }
 
+.main-nav-scrolled {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	z-index: 50;
+}
 
+.site-logo-small {
+	display: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
+.site-logo-small {
+	display: none;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+}
 
+.fadeIn {
+	display: block;
+	-webkit-animation: fadeInFromNone 0.25s ease-out;
+	-moz-animation: fadeInFromNone 0.25s ease-out;
+	-o-animation: fadeInFromNone 0.25s ease-out;
+	animation: fadeInFromNone 0.25s ease-out;
+}
+
+@-webkit-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInFromNone {
+    0% {
+        display: none;
+        opacity: 0;
+    }
+    100% {
+        display: block;
+        opacity: 1;
+    }
+}

@@ -3,6 +3,7 @@
     .site-header__logo-image {
       max-width: {{ section.settings.logo_max_width }}px;
     }
+	
   {% endif %}
 </style>
 <div data-section-id="{{ section.id }}" class="header-wrap" data-section-type="header-section">
@@ -32,12 +33,14 @@
     {% endif %}
 
 	<div class="header-search-and-cart">
-
-		<a class="hdrcartlink" href="/cart">
-		  {% include 'icon-cart' %}
-		  {{ 'layout.cart.title' | t }}
-		  [{{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }}]
-		</a>
+		<div class="hdrcartlink">
+			<a href="/cart">
+			  {% include 'icon-cart' %}
+			  {{ 'layout.cart.title' | t }}
+			  [{{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }}]
+			</a>
+		</div>
+		
 
 		{% if shop.customer_accounts_enabled %}
 		  <ul class="customer-links">
@@ -85,6 +88,16 @@
 
   <nav class="header-nav" role="navigation">
     <div class="hamburger"><a href="#" class="toggleNav">{% include 'icon-hamburger' %}</a></div>
+	<a href="/" itemprop="url" class="site-logo-small{% if section.settings.logo-small != blank %} site-header__logo-image-small{% endif %}">
+          {% if section.settings.logo != blank %}
+            {% capture image_size %}{{ section.settings.small_logo_max_width }}x{% endcapture %}
+            <img src="{{ section.settings.logo-small | img_url: image_size }}"
+                 alt="{{ section.settings.logo-small.alt | default: shop.name }}"
+                 itemprop="logo">
+          {% else %}
+            {{ shop.name }} goes here test and is totally password protected frauck!
+          {% endif %}
+        </a>
     <ul class="site-nav">
       {% for link in linklists[section.settings.main_linklist].links %}
         {%- assign child_list_handle = link.title | handleize -%}
@@ -130,6 +143,20 @@
         "unit": "px",
         "label": "Custom logo width",
         "default": 250
+      },{
+        "type": "image_picker",
+        "id": "logo-small",
+        "label": "Small Logo image"
+      },
+      {
+        "type": "range",
+        "id": "small_logo_max_width",
+        "min": 50,
+        "max": 150,
+        "step": 10,
+        "unit": "px",
+        "label": "Custom small logo width",
+        "default": 150
       },
       {
         "type": "link_list",

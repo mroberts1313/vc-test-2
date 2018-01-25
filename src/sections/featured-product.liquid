@@ -7,6 +7,8 @@
   {%- assign onboarding_title = 'homepage.onboarding.product_title' | t -%}
 {% endif %}
 
+<div class="page-width">
+
 <div data-section-id="{{ section.id }}" data-section-type="product" itemscope itemtype="http://schema.org/Product">
   <meta itemprop="name" content="{{ product.title }}">
   <meta itemprop="url" content="{{ shop.url }}{{ product.url }}">
@@ -123,6 +125,7 @@
       {{ product | json }}
     </script>
   {% endunless %}
+</div>
 </div>
 
 {% schema %}
