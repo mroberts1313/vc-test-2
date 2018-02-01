@@ -11,7 +11,7 @@
     {% if template.name == 'index' %}
       <h1 class="header-logo" itemscope itemtype="http://schema.org/Organization">
     {% else %}
-      <div class="h1" itemscope itemtype="http://schema.org/Organization">
+      <div class="h1 header-logo" itemscope itemtype="http://schema.org/Organization">
     {% endif %}
         <a href="/" itemprop="url" class="site-logo{% if section.settings.logo != blank %} site-header__logo-image{% endif %}">
           {% if section.settings.logo != blank %}
@@ -76,7 +76,7 @@
 				 id="Search"
 				 value="{{ search.terms | escape }}"
 				 placeholder="{{ 'general.search.placeholder' | t }}">
-		  <button type="submit" class="btn">
+		  <button type="submit" class="btn btn-search">
 			{% include 'icon-search' %}
 			<span class="icon-fallback-text">{{ 'general.search.submit' | t }}</span>
 		  </button>

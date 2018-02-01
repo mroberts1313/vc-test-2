@@ -53,6 +53,8 @@ header {
 	}
 }
 
+	
+	
 .header-search {
   order: 2;
   @include media-query($small) {
@@ -68,12 +70,16 @@ header {
 		font-size: 14px;
 		padding-top: .1rem;
 		padding-bottom: .1rem;
+		height: 20px;
 	}
 	}
 	button {
 	  @include media-query($small) {
 		float: left;
 		}
+	}
+	.btn-search {
+	  margin: 1px 0 0 -4px;
 	}
 }
 
