@@ -87,6 +87,7 @@
 
 .home_products-product-title {
 	font-size: 1.75em;
+	margin-bottom: 2rem;
 }
 
 
@@ -100,6 +101,56 @@
 .home_featured_product-product-title {
 	font-size: 2.75em;
 	font-style: italic;
+	margin: .5rem 0 1rem;
+}
+
+.home_featured_product_company {
+	font-size: 1.35em;
+}
+
+.featured_product_form {
+	max-width: 400px;
+	margin: 0 auto 2em;
+	text-align: left;
+}
+.featured_product_form label {
+	display: inline-block;
+	vertical-align: middle;
+	margin-right: .5rem;
+}
+
+.featured_product_form input, 
+.featured_product_form select {
+	padding: 5px 4px 4px 8px;
+	border: #dadada solid 1px;
+	border-radius: 2px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.featured_product_form select {
+	padding-right: 1.5em;
+}
+.featured_product_inputs {
+	margin-bottom: .3rem;
+}
+.featured_product_inputs input[type=number] {
+	width: 3em;
+	
+}
+
+.featured_product_form button {
+	border: 0;
+	border-radius: 10px;
+	padding: .3em 1em;
+	font-size: 1.25rem;
+	background: orange;
+	color: darkblue;
+	transition: .2s;
+	line-height: 1;
+}
+.featured_product_form button:hover {
+	background: #ffc700;
+	color: darkgreen;
 }
 
 
@@ -153,7 +204,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffd651', end
 	
 	
 	&:hover {
-		transition: 0s linear;
+		transition: .2s linear;
 		span {
 			transform: skewX(15deg);
 			font-weight: bold;
