@@ -18,7 +18,7 @@
             {% capture image_size %}{{ section.settings.logo_max_width }}x{% endcapture %}
             <img src="{{ section.settings.logo | img_url: image_size }}"
                  srcset="{{ section.settings.logo | img_url: image_size }} 1x, {{ section.settings.logo | img_url: image_size, scale: 2 }} 2x"
-                 alt="{{ section.settings.logo.alt | default: shop.name }}"
+                 alt="{{ section.settings.alt | default: shop.name }}"
                  itemprop="logo">
           {% else %}
             {{ shop.name }} goes here test and is totally password protected frauck!
@@ -92,7 +92,7 @@
           {% if section.settings.logo != blank %}
             {% capture image_size %}{{ section.settings.small_logo_max_width }}x{% endcapture %}
             <img src="{{ section.settings.logo-small | img_url: image_size }}"
-                 alt="{{ section.settings.logo-small.alt | default: shop.name }}"
+                 alt="{{ section.settings.alt | default: shop.name }}"
                  itemprop="logo">
           {% else %}
             {{ shop.name }} goes here test and is totally password protected frauck!
@@ -158,6 +158,11 @@
         "label": "Custom small logo width",
         "default": 150
       },
+	  {
+		"id": "alt",
+		"type": "text",
+		"label": "Image Alt text"
+	  },
       {
         "type": "link_list",
         "id": "main_linklist",

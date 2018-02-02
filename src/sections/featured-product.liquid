@@ -31,7 +31,7 @@
     </ul>
   {% endif %}
 
-  <h1>{{ product.title | default: onboarding_title }}</h1>
+  <h1 class="home_featured_product-product-title">{{ product.title | default: onboarding_title }}</h1>
   {% if product.vendor != blank %}
     <p>{{ product.vendor }}</p>
   {% endif %}

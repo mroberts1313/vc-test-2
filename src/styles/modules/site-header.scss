@@ -127,10 +127,27 @@ header {
 }
 .site-nav li > a {
   display: block;
+  position: relative;
   padding: .5rem 1rem;
   text-decoration: none;
-  @include media-query($small) {
+    @include media-query($small) {
 	  border-bottom: #002e5f solid 1px;
+	}
+	&:before {
+		content: '';
+		position: absolute;
+		width: 100%;
+		height: 2px;
+		bottom: 4px;
+		left: 0;
+		background-color: darkgreen;
+		visibility: visible;
+		transform: scaleX(0);
+		transition: all 0.2s;
+	}
+	&:hover:before {
+	  visibility: visible;
+	  transform: scaleX(0.75);
 	}
 }
 
