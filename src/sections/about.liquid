@@ -1,0 +1,82 @@
+{% if section.settings.h2 != blank %}
+    <div class="about1 ">
+		<div class="page-width text-center">
+			<h2>{{ section.settings.h2 }}</h2>
+			<p>{{ section.settings.desctext }}</p>
+			{% for block in section.blocks %}
+				<p {{ block.shopify_attributes }}>
+				{% case block.type %}
+					{% when 'image_info' %}
+					<img src="{{ block.settings.bigImage | img_url: '1200x' }}" alt="{{ block.settings.imgalttext }}" /></p>
+				{% endcase %}
+			{% endfor %}
+			
+			{% for block in section.blocks %}
+				<div class="about_further" {{ block.shopify_attributes }}>
+				{% case block.type %}
+					{% when 'moretext' %}
+					{{ block.settings.morecontent }}
+				{% endcase %}
+			{% endfor %}
+		</div>
+	</div>
+	
+{% endif %}
+
+
+<style>
+.about1 {
+	margin-top: 1em;
+	padding: 2em 0;
+	background: #dadada;
+}
+</style>
+
+{% schema %}
+  {
+    "name": "About",
+    "settings": [
+	  {
+		"id": "h2",
+		"type": "text",
+		"label": "About Story Headline"
+	  },
+	  {
+		"id": "desctext",
+		"type": "textarea",
+		"label": "Long Description"
+	  }
+	  ],
+	  "blocks": [
+      {
+        "type": "image_info",
+        "name": "About Images",
+		"limit": 3,
+        "settings": [
+          {
+			"type": "image_picker",
+			"id": "bigImage",
+			"label": "The Big image"
+		  },
+		  {
+			"id": "imgalttext",
+			"type": "text",
+			"label": "Image Alt Text"
+		  }
+        ]
+      },
+	  {
+        "type": "moretext",
+        "name": "Further Description",
+		"limit": 2,
+        "settings": [
+          {
+			"type": "html",
+			"id": "morecontent",
+			"label": "HTML: p, br, strong, b, em, i, u, span, a"
+		  }
+        ]
+      }
+    ]
+  }
+{% endschema %}

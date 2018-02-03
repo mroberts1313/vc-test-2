@@ -2,6 +2,13 @@
 body,
 html {
   background-color: $color-body;
+  font-family: $font-stack-header;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+input, select, textarea {
+	font-family: $font-stack-header;
 }
 
 .page-width {
@@ -9,4 +16,19 @@ html {
   max-width: $width-site;
   padding: 0 $gutter;
   margin: 0 auto;
+}
+
+h2 {
+    font-family: $font-stack-header;
+}
+
+a {
+    color: darkblue;
+    transition: all .15s ease-in-out;
+	-o-transition: all .15s ease-in-out;
+	-moz-transition: all .15s ease-in-out;
+	-webkit-transition: all .15s ease-in-out;
+}
+a:hover {
+    color: darkgreen;
 }

@@ -1,9 +1,12 @@
+<div class="page-width home-collection-1">
+
 {% if section.settings.title != blank %}
-  <h2>{{ section.settings.title | escape }}</h2>
+  <h2 class="text-center">{{ section.settings.title | escape }}</h2>
 {% endif %}
 
+<div class="collection-carousel owl-carousel">
 {% for block in section.blocks limit: section.blocks.size %}
-  <div {{ block.shopify_attributes }}>
+  <div class="" {{ block.shopify_attributes }}>
     {%- assign collection = collections[block.settings.collection] -%}
 
     <a href="{% if collection == empty %}#{% else %}{{ collection.url }}{% endif %}">
@@ -16,7 +19,7 @@
         {{ 'collection-' | append: current | placeholder_svg_tag: 'placeholder-svg placeholder-svg--small' }}
       {% endif %}
 
-      <p>
+      <p class="text-center">
         {% if collection == empty %}
           {{ 'homepage.onboarding.collection_title' | t }}
         {% else %}
@@ -26,10 +29,13 @@
     </a>
   </div>
 {% endfor %}
+</div>
 
 {% if section.blocks.size == 0 %}
   {% include 'no-blocks' %}
 {% endif %}
+
+</div>
 
 {% schema %}
   {

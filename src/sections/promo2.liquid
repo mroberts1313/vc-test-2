@@ -1,0 +1,53 @@
+<div class="promo1 bgscroll">
+    <div class="promo1_content  text-center">
+        <h2>{{ section.settings.h2 }}</h2>
+        <p><a href="{{ section.settings.link }}" class="btn_promo1"><span>{{ section.settings.linktext }}</span></a></p>
+    </div>
+</div>
+<style>
+{% if section.settings.bigImage != blank %}
+	.promo1 {
+		width: 100%;
+		min-height: 100vh;
+		position: relative;
+		background: #fff url({{ section.settings.bigImage | img_url: '2000x' }}) no-repeat fixed center center;
+		background-size: cover;
+	}
+	
+{% endif %}
+</style>
+{% schema %}
+{
+	"presets": [
+	  {
+		"name": "Big Lifestyle Promo",
+		"category": "Lifestyle"
+		}
+	],
+		
+	"name": "Big Lifestyle Promo",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "bigImage",
+        "label": "The Big image"
+      },
+	  {
+		"id": "h2",
+		"type": "text",
+		"label": "Promo Headline"
+	  },
+	  {
+		"id": "linktext",
+		"type": "text",
+		"label": "Link Text",
+		"default": "Shop Now"
+	  },
+	  {
+		  "id": "link",
+		  "type": "url",
+		  "label": "Button link"
+		}
+	]
+  }
+{% endschema %}
