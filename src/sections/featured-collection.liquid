@@ -7,7 +7,7 @@
 		{%- assign collection = collections[section.settings.collection] -%}
 		<div class="grid ">
 			{% for product in collection.products limit: 6 %}
-				<div class="grid__item">
+				<div class="grid__item one-third small--one-whole text-center">
 				  <a href="{{ product.url | within: collection }}">
 
 					{% if product.featured_image != blank %}
@@ -54,7 +54,7 @@
 
 					<p>{{ 1999 | money }}</p>
 				  {% endfor %}
-				  
+
 				</div>
 			{% endfor %}
 		</div>

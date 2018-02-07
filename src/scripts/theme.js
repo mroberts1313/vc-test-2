@@ -138,6 +138,25 @@ if ($(window).width() < 750) {
         }
 	});
 
+    var product_thumbswap = function(e) {
+        e.preventDefault();
+        var newsrc = $("img", this).attr('src');
+        var newsrcbig = $("img", this).data('big-product-img');
+        var newsrcbig2 = $("img", this).data('big-product-img');
+        $('.main_product_img').attr('src', newsrc);
+        $('.main_product_img_link').attr('href', newsrcbig);
+        $('.main_product_img').data('zoom', newsrcbig2);
+    }
+
+    $('.product_thumbnail').click(product_thumbswap).hover(product_thumbswap);
+
+    $('.adddrevil').each(function() {
+        var price = $(this).text();
+        var substring = "000,000";
+        if (price.indexOf(substring) !== -1) {
+            $(this).addClass('drevil');
+        }
+    })
 
 
 });

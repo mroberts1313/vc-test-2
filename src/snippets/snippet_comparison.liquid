@@ -1,0 +1,12 @@
+<div>
+    <div>
+        <h2>{{ block.settings.comparisonTitle }}</h2>
+        <div>
+            {{ block.settings.comparisonSummary }}
+        </div>
+        <p><img src="{{ block.settings.comparisonImage | img_url: '2000x' }}" alt="Compare!"></p>
+        <p>
+            <a href="{{ block.settings.comparisonButtonLink }}" class="btn_promo1"><span>{{ block.settings.comparisonButtonText }}</span></a>
+        </p>
+    </div>
+</div>

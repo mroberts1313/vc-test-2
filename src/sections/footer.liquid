@@ -1,54 +1,51 @@
 <footer>
 
-		  
-	<div class="page-width grid">
-		<div class="grid__item one-quarter">
-			<a href="/">
-			{% if section.settings.footerlogo != blank %}
-				<img src="{{ section.settings.footerlogo | img_url: image_size }}"
-					 srcset="{{ section.settings.footerlogo | img_url: image_size }} 1x, {{ section.settings.footerlogo | img_url: image_size, scale: 2 }} 2x"
-					 alt="{{ section.settings.alt | default: shop.name }}"
-					 itemprop="logo">
-			  {% else %}
-				{{ shop.name }} goes here test and is totally password protected frauck!
-			  {% endif %}
-			</a>
-		</div>
-		<div class="grid__item one-sixth">
-		  {%- assign footer_linklist = section.settings.footer_linklist -%}
-		  {% if linklists[footer_linklist].links.size > 0 %}
-			<ul>
-			  {% for link in linklists[footer_linklist].links %}
-				<li><a href="{{ link.url }}">{{ link.title }}</a></li>
-			  {% endfor %}
-			</ul>
-		  {% endif %}
-		</div>
-		<div class="grid__item one-half">
-			<div class="grid--rev">
-				<div class="grid__item one-half text-right">
-					{%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
-				  <ul class="footer_social">
-					{% for social in social_accounts %}
-					  {%- assign social_handle = social | handleize -%}
-					  {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
-					  {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
 
-					  {% if settings[social_link] != blank %}
-						<li>
-						  <a href="{{ settings[social_link] }}" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
-							{% include social_icon %}
-							<span class="icon-fallback-text">{{ social }}</span>
-						  </a>
-						</li>
-					  {% endif %}
-
-					{% endfor %}
-				  </ul>
-				</div>
+	<div class="page-width">
+		<div class="grid">
+			<div class="grid__item one-quarter small--one-whole">
+				<a href="/">
+				{% if section.settings.footerlogo != blank %}
+					<img src="{{ section.settings.footerlogo | img_url: image_size }}"
+						 srcset="{{ section.settings.footerlogo | img_url: image_size }} 1x, {{ section.settings.footerlogo | img_url: image_size, scale: 2 }} 2x"
+						 alt="{{ section.settings.alt | default: shop.name }}"
+						 itemprop="logo">
+				  {% else %}
+					{{ shop.name }} goes here test and is totally password protected frauck!
+				  {% endif %}
+				</a>
 			</div>
-		
-			
+			<div class="grid__item one-sixth small--one-whole">
+			  {%- assign footer_linklist = section.settings.footer_linklist -%}
+			  {% if linklists[footer_linklist].links.size > 0 %}
+				<ul class="footer_menu">
+				  {% for link in linklists[footer_linklist].links %}
+					<li><a href="{{ link.url }}">{{ link.title }}</a></li>
+				  {% endfor %}
+				</ul>
+			  {% endif %}
+			</div>
+			<div class="grid__item one-half small--one-whole footer_social_wrap spinsocial">
+				{%- assign social_accounts = 'Facebook, Twitter, Pinterest, Instagram, Snapchat, Tumblr, YouTube, Vimeo,' | split: ', ' -%}
+			  <ul class="footer_social">
+				{% for social in social_accounts %}
+				  {%- assign social_handle = social | handleize -%}
+				  {% capture social_link %}social_{{ social_handle }}_link{% endcapture %}
+				  {% capture social_icon %}icon-{{ social_handle }}{% endcapture %}
+
+				  {% if settings[social_link] != blank %}
+					<li>
+					  <a href="{{ settings[social_link] }}" class="social-sharing-link" title="{{ 'layout.footer.social_platform' | t: name: shop.name, platform: social }}">
+						{% include social_icon %}
+						<span class="icon-fallback-text">{{ social }}</span>
+					  </a>
+					</li>
+				  {% endif %}
+
+				{% endfor %}
+			  </ul>
+			</div>
+
 		</div>
 	</div>
 
@@ -76,10 +73,10 @@
 	  <p class="text-center">
 		<small>{{ 'layout.footer.copyright' | t }} &copy; {{ 'now' | date: "%Y" }}, {{ shop.name | link_to: '/' }}. {{ powered_by_link }}</small>
 	  </p>
-	  
+
   </div>
 
-  
+
 </footer>
 <!-- for using gradients from here: http://www.colorzilla.com/gradient-editor/ -->
 <!--[if gte IE 9]>

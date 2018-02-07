@@ -35,8 +35,11 @@
 	  {% if product.vendor != blank %}
 		<p class="home_featured_product_company"><strong><em>{{ product.vendor }}</em></strong></p>
 	  {% endif %}
+      <div class="rte basic_product_desc">
+		{{ product.description }}
+	  </div>
 
-	  <div class="featured_product_form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+	  <div class="featured_product_form basic_product_form" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
 		<meta itemprop="priceCurrency" content="{{ shop.currency }}">
 		<meta itemprop="price" content="{{ product.price | divided_by: 100.00 }}">
 		<link itemprop="availability" href="http://schema.org/{% if product.available %}InStock{% else %}OutOfStock{% endif %}">
@@ -66,8 +69,8 @@
 				{% endfor %}
 			  {% endunless %}
 		  {% endcomment %}
-		  
-		  <div class="featured_product_inputs">
+
+		  <div class="basic_product_inputs">
 			<label>
 				{{ section.settings.variantLabel }}
 			</label>
@@ -82,14 +85,14 @@
 				{% endfor %}
 			</select>
 		  </div>
-		  
-		  <div class="featured_product_inputs clearfix">
-			<div class="fleft">
-			<label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
-			<input type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1">
+
+		  <div class="basic_product_inputs clearfix">
+			<div class="iblock">
+    			<label for="Quantity-{{ section.id }}">{{ 'products.product.quantity' | t }}</label>
+    			<input type="number" id="Quantity-{{ section.id }}" name="quantity" value="1" min="1">
 			</div>
-			<div class="fright">
-				<div data-price-wrapper>
+			<div class="iblock">
+				<div data-price-wrapper class="basic_product_form-wrapper">
 					<span data-product-price>
 					  {{ current_variant.price | default: '1999' | money }}
 					</span>
@@ -104,32 +107,31 @@
 					{% endif %}
 				</div>
 			</div>
-			
+            <p class="iblock">
+    		  <button
+    			type="submit"
+    			name="add"
+    			data-add-to-cart
+    			{% unless product.available %}disabled="disabled"{% endunless %}
+    			{% if section_onboarding %}disabled="disabled"{% endif %}>
+    			  <span data-add-to-cart-text>
+    				{% if product.available %}
+    				  {{ 'products.product.add_to_cart' | t }}
+    				{% else %}
+    				  {{ 'products.product.sold_out' | t }}
+    				{% endif %}
+    			  </span>
+    		  </button>
+    		</p>
+
 		  </div>
 
-		<p>
-		  <button
-			type="submit"
-			name="add"
-			data-add-to-cart
-			{% unless product.available %}disabled="disabled"{% endunless %}
-			{% if section_onboarding %}disabled="disabled"{% endif %}>
-			  <span data-add-to-cart-text>
-				{% if product.available %}
-				  {{ 'products.product.add_to_cart' | t }}
-				{% else %}
-				  {{ 'products.product.sold_out' | t }}
-				{% endif %}
-			  </span>
-		  </button>
-		</p>
+
 		</form>
 
 	  </div>
 
-	  <div class="rte">
-		{{ product.description }}
-	  </div>
+
 
 	  {% if section.settings.show_share_buttons %}
 		{% include 'social-sharing', share_title: product.title, share_permalink: product.url, share_image: product %}

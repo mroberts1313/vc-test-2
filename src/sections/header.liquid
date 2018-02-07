@@ -3,11 +3,11 @@
     .site-header__logo-image {
       max-width: {{ section.settings.logo_max_width }}px;
     }
-	
+
   {% endif %}
 </style>
 <div data-section-id="{{ section.id }}" class="header-wrap" data-section-type="header-section">
-  <header role="banner">
+  <header role="banner" class="site-header">
     {% if template.name == 'index' %}
       <h1 class="header-logo" itemscope itemtype="http://schema.org/Organization">
     {% else %}
@@ -40,7 +40,7 @@
 			  [{{ cart.item_count }} {{ 'layout.cart.items_count' | t: count: cart.item_count }}]
 			</a>
 		</div>
-		
+
 
 		{% if shop.customer_accounts_enabled %}
 		  <ul class="customer-links">
@@ -82,7 +82,7 @@
 		  </button>
 		</form>
 	</div>
-    
+
 
   </header>
 

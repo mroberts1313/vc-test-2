@@ -4,10 +4,36 @@ footer {
 	background: #d7e9fd;
 }
 
+.footer_menu {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.footer_menu li {
+	margin: 0 0 .8rem;
+}
+
+.footer_social_wrap {
+	text-align: right;
+	@include media-query($small) {
+		text-align: left;
+	}
+}
+
 .footer_social {
 	list-style: none;
+	margin: 0;
+	padding: 0;
+	@include media-query($small) {
+		width: 80%;
+		margin: 0 auto;;
+		text-align: center;
+	}
 }
 .footer_social li {
 	display: inline-block;
 	margin: 0 .5rem;
+}
+.footer_social li:first-of-type {
+	margin-left: 0;
 }

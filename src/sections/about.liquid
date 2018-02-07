@@ -10,7 +10,7 @@
 					<img src="{{ block.settings.bigImage | img_url: '1200x' }}" alt="{{ block.settings.imgalttext }}" /></p>
 				{% endcase %}
 			{% endfor %}
-			
+
 			{% for block in section.blocks %}
 				<div class="about_further" {{ block.shopify_attributes }}>
 				{% case block.type %}
@@ -20,7 +20,7 @@
 			{% endfor %}
 		</div>
 	</div>
-	
+
 {% endif %}
 
 

@@ -10,3 +10,34 @@
   white-space: nowrap;
   border: 0;
 }
+.spinsocial {
+
+    .social-sharing-link {
+        text-decoration: none;
+        margin-right: .5rem;
+        transition: 1s;
+    }
+    .social-sharing-link:hover svg {
+        animation: roll .5s;
+    }
+}
+@keyframes roll {
+  0% {
+    transform: rotate(0);
+  }
+  20% {
+    transform: rotate(-5deg);
+  }
+  40% {
+    transform: rotate(5deg);
+  }
+  60% {
+    transform: rotate(-5deg);
+  }
+  80% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0);
+  }
+}
